@@ -21,3 +21,16 @@ This was build using Antlr 4.7 with the following steps:
 line 1:120 no viable alternative at input '(DATEDIF(DATEVALUE("01-01-1970"),date.now,"D")*24*60*60)+((((HOUR(date.now)+7)*60)+MINUTE(date.now))*60))'
   26.604543359s PARSING (DATEDIF(DATEVALUE("01-01-1970"), date.now, "D") * 24 * 60 * 60) + ((((HOUR(date.now)+7) * 60) + MINUTE(date.now)) * 60))
 ```
+
+Note on Python performance is still slow (pointing to a Grammar issue) but still 20 times faster than Go:
+
+```
+0.000061s LEXING "hello world"
+0.014349s PARSING "hello world"
+0.000052s LEXING 5 + 10
+0.015384s PARSING 5 + 10
+0.000061s LEXING FIRST_WORD(WORD_SLICE(contact.blerg, 2, 4))
+0.634113s PARSING FIRST_WORD(WORD_SLICE(contact.blerg, 2, 4))
+0.000095s LEXING (DATEDIF(DATEVALUE("01-01-1970"), date.now, "D") * 24 * 60 * 60) + ((((HOUR(date.now)+7) * 60) + MINUTE(date.now)) * 60))
+1.552758s PARSING (DATEDIF(DATEVALUE("01-01-1970"), date.now, "D") * 24 * 60 * 60) + ((((HOUR(date.now)+7) * 60) + MINUTE(date.now)) * 60))
+```
