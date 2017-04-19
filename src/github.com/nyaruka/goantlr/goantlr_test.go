@@ -15,7 +15,7 @@ func BenchmarkAntlr(b *testing.B) {
 		"\"hello world\"",
 		"5 + 10",
 		"FIRST_WORD(WORD_SLICE(contact.blerg, 2, 4))",
-		"(DATEDIF(DATEVALUE(\"01-01-1970\"), date.now, \"D\") * 24 * 60 * 60) + ((((HOUR(date.now)+7) * 60) + MINUTE(date.now)) * 60))",
+		"((DATEDIF(DATEVALUE(\"01-01-1970\"), date.now, \"D\") * 24 * 60 * 60) + (((HOUR(date.now)+7) * 60) + MINUTE(date.now)) * 60)",
 	}
 
 	for _, test := range parsingTests {
